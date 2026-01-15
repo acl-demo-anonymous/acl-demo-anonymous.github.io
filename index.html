@@ -5,29 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retrieval Case Studies</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- React & ReactDOM -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <!-- Babel for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
         body { background-color: #f8fafc; }
-        /* 简单的加载动画防止闪烁 */
         .fade-in { animation: fadeIn 0.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        /* 隐藏滚动条但保留功能 */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
         .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -37,7 +29,6 @@
     <script type="text/babel">
         const { useState } = React;
 
-        // --- 图标组件定义 (SVG) ---
         const IconBase = ({ size = 24, children, ...props }) => (
             <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -69,8 +60,6 @@
         const Layers = (props) => <IconBase {...props}><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></IconBase>;
         const Aperture = (props) => <IconBase {...props}><circle cx="12" cy="12" r="10"/><line x1="14.31" y1="8" x2="20.05" y2="17.94"/><line x1="9.69" y1="8" x2="21.17" y2="8"/><line x1="7.38" y1="12" x2="13.12" y2="2.06"/><line x1="9.69" y1="16" x2="3.95" y2="6.06"/><line x1="14.31" y1="16" x2="2.83" y2="16"/><line x1="16.62" y1="12" x2="10.88" y2="21.94"/></IconBase>;
         const ArrowDown = (props) => <IconBase {...props}><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></IconBase>;
-
-        // --- 数据配置 ---
         
         const BASELINE_MODELS = [
           { id: 'omni', name: 'Qwen2.5-Omni-Embed-v0.1', description: '' },
@@ -86,7 +75,6 @@
           isRelevant
         });
 
-        // 包含 Letterboxd, Goodreads, Steam 的完整数据
         const CASES = [
           {
             id: 'Letterboxd',
@@ -153,7 +141,7 @@
               {
                 id: 'query2',
                 type: "Text-to-Text&Image",
-                text: "Movie where daughter invites 3 potential dads to her wedding",
+                text: "I am looking for a movie where daughter invites 3 potential dads to her wedding",
                 desc: "Movie:Mamma Mia!",
                 queryImage: "", 
                 results: {
@@ -387,7 +375,7 @@
                 id: 'query1',
                 type: "Text-to-Text&Image",
                 queryImage: "",
-                text: "book about jay gatsby trying to relive the past",
+                text: "Is there a book about jay gatsby trying to relive the past.",
                 desc: "Book:The Great Gatsby",
                 results: {
                   'omni': {
@@ -444,7 +432,7 @@
                 id: 'query2',
                 type: "Text-to-Text&Image",
                 queryImage: "",
-                text: "Stephen hawking book on cosmology and time travel",
+                text: "Stephen hawking's book on cosmology and time travel",
                 desc: "Book:A Brief History of Time",
                 results: {
                   'omni': {
@@ -564,56 +552,56 @@
               {
                 id: 'query2',
                 type: "Text-to-Text&Image",
-                text: "Red dead redemption 2 ultimate edition vs standard differences",
-                desc: "Game:Red Dead Redemption 2",
+                text: "I am looking for a game where can be an imposter on a spaceship",
+                desc: "Game:Among Us",
                 queryImage: "", 
                 results: {
                   'omni': {
                     baseline: [
-                      createResult('sq2ob1', 'Game:Red Dead Redemption 2', 0.598, true, './cases/Steam/query2/omni/base/1174180_1_59.8.jpg'),
-                      createResult('sq2ob2', 'Game:Cyberpunk 2077', 0.587, false, './cases/Steam/query2/omni/base/1091500_2_58.7.jpg'),
-                      createResult('sq2ob3', 'Game:Forza Horizon 5', 0.582, false, './cases/Steam/query2/omni/base/1551360_3_58.2.jpg'),
-                      createResult('sq2ob4', 'Game:Surviving Mars', 0.575, false, './cases/Steam/query2/omni/base/464920_4_57.5.jpg'),
-                      createResult('sq2ob5', 'Game:Control Ultimate Edition', 0.554, false, './cases/Steam/query2/omni/base/870780_5_55.4.jpg')
+                      createResult('sq2ob1', 'Game:Human-powered spacecraft', 0.680, false, './cases/Steam/query2/Omni/base/699180_1_68.0.jpg'),
+                      createResult('sq2ob2', 'Game:Paranoia Party', 0.678, false, './cases/Steam/query2/Omni/base/2255140_2_67.8.jpg'),
+                      createResult('sq2ob3', 'Game:The Accuser and The Abyss', 0.677, false, './cases/Steam/query2/Omni/base/3356290_3_67.7.jpg'),
+                      createResult('sq2ob4', 'Game:Appease the Spider', 0.677, false, './cases/Steam/query2/Omni/base/1534250_4_67.7.jpg'),
+                      createResult('sq2ob5', 'Game:Silent Station', 0.675, false, './cases/Steam/query2/Omni/base/2292980_5_67.5.jpg')
                     ],
                     ours: [
-                      createResult('sq2of1', 'Game:Red Dead Redemption 2', 0.621, true, './cases/Steam/query2/omni/ft/1174180_1_62.1.jpg'),
-                      createResult('sq2of2', 'Game:Red Dead Redemption', 0.610, false, './cases/Steam/query2/omni/ft/2668510_1_61.0.jpg'),
-                      createResult('sq2of3', 'Game:Dear RED - Extended', 0.605, false, './cases/Steam/query2/omni/ft/453850_3_60.5.jpg'),
-                      createResult('sq2of4', 'Game:Cyberpunk 2077', 0.588, false, './cases/Steam/query2/omni/ft/1091500_4_58.8.jpg'),
-                      createResult('sq2of5', 'Game:Deep Rock Galactic', 0.566, false, './cases/Steam/query2/omni/ft/548430_5_56.6.jpg')
+                      createResult('sq2of1', 'Game:Among Us', 0.677, true, './cases/Steam/query2/Omni/ft/945360_1_67.7.jpg'),
+                      createResult('sq2of2', 'Game:Infected spaceship generator', 0.625, false, './cases/Steam/query2/Omni/ft/1548620_2_62.5.jpg'),
+                      createResult('sq2of3', 'Game:Spaceship Killer', 0.620, false, './cases/Steam/query2/Omni/ft/3389230_3_62.0.jpg'),
+                      createResult('sq2of4', 'Game:Void Encounter', 0.609, false, './cases/Steam/query2/Omni/ft/1451440_4_60.9.jpg'),
+                      createResult('sq2of5', 'Game:Spaceship - Visual Effect Graph Demo', 0.604, false, './cases/Steam/query2/Omni/ft/1605230_5_60.4.jpg')
                     ]
                   },
                   'gme': {
                     baseline: [
-                      createResult('sq2gb1', 'Game:Red Dead Redemption 2', 0.682, true, './cases/Steam/query2/gme/base/1174180_1_68.2.jpg'),
-                      createResult('sq2gb2', 'Game:Red Dead Redemptio', 0.561, false, './cases/Steam/query2/gme/base/2668510_2_56.1.jpg'),
-                      createResult('sq2gb3', 'Game:Red Dead Online', 0.545, false, './cases/Steam/query2/gme/base/1404210_3_54.5.jpg'),
-                      createResult('sq2gb4', 'Game:Darksiders II Deathinitive Edition', 0.532, false, './cases/Steam/query2/gme/base/388410_4_53.2.jpg'),
-                      createResult('sq2gb5', 'Game:Cyberpunk 2077', 0.521, false, './cases/Steam/query2/gme/base/1091500_5_52.1.jpg')
+                      createResult('sq2gb1', 'Game:Killer Inside Us', 0.621, false, './cases/Steam/query2/gme/base/1440280_1_62.1.jpg'),
+                      createResult('sq2gb2', 'Game:Impostor Factory', 0.617, false, './cases/Steam/query2/gme/base/1182620_2_61.7.jpg'),
+                      createResult('sq2gb3', 'Game:Imposters: Countdown', 0.600, false, './cases/Steam/query2/gme/base/1445370_360.0.jpg'),
+                      createResult('sq2gb4', 'Game:Among Us', 0.592, true, './cases/Steam/query2/gme/base/945360_4_59.2.jpg'),
+                      createResult('sq2gb5', 'Game:Starship Inspector', 0.588, false, './cases/Steam/query2/gme/base/1213390_5_58.8.jpg')
                     ],
                     ours: [
-                      createResult('sq2gf1', 'Game:Red Dead Redemption 2', 0.642, true, './cases/Steam/query2/gme/ft/1174180_1_64.2.jpg'),
-                      createResult('sq2gf2', 'Game:Red Dead Redemption', 0.629, false, './cases/Steam/query2/gme/ft/2668510_2_62.9.jpg'),
-                      createResult('sq2gf3', 'Game:Red Dead Online', 0.614, false, './cases/Steam/query2/gme/ft/1404210_3_61.4.jpg'),
-                      createResult('sq2gf4', 'Game:TEKKEN 8', 0.574, false, './cases/Steam/query2/gme/ft/1778820_4_57.4.9.jpg'),
-                      createResult('sq2gf5', 'Game:Deep Rock Galactic', 0.566, false, './cases/Steam/query2/gme/ft/548430_5_56.6.jpg')
+                      createResult('sq2gf1', 'Game:Among Us', 0.635, true, './cases/Steam/query2/gme/ft/945360_1_63.5.jpg'),
+                      createResult('sq2gf2', 'Game:Imposters: Countdown', 0.631, false, './cases/Steam/query2/gme/ft/1445370_2_63.1.jpg'),
+                      createResult('sq2gf3', 'Game:Impostor Inside Us', 0.629, false, './cases/Steam/query2/gme/ft/1416340_3_62.9.jpg'),
+                      createResult('sq2gf4', 'Game', 0.621, false, './cases/Steam/query2/gme/ft/2920270_62.1.jpg'),
+                      createResult('sq2gf5', 'Game', 0.618, false, './cases/Steam/query2/gme/ft/3458750_5_61.8.jpg')
                     ]
                   },
                   'bge': {
                     baseline: [
-                      createResult('sq2bb1', 'Game:Red Dead Redemption 2', 0.549, true, './cases/Steam/query2/bge/base/1174180_1_54.9.jpg'),
-                      createResult('sq2bb2', 'Game', 0.479, false, './cases/Steam/query2/bge/base/2668510_2_47.9.jpg'),
-                      createResult('sq2bb3', 'Game', 0.467, false, './cases/Steam/query2/bge/base/1404210_3_46.7.jpg'),
-                      createResult('sq2bb4', 'Game', 0.442, false, './cases/Steam/query2/bge/base/2369390_4_44.2.jpg'),
-                      createResult('sq2bb5', 'Game', 0.419, false, './cases/Steam/query2/bge/base/1778820_5_41.9.jpg')
+                      createResult('sq2bb1', 'Game:Killer Inside Us', 0.555, false, './cases/Steam/query2/bge/base/1440280_1_55.5.jpg'),
+                      createResult('sq2bb2', 'Game:Impostor Inside Us', 0.549, false, './cases/Steam/query2/bge/base/1416340_2_54.9.jpg'),
+                      createResult('sq2bb3', 'Game:Among Us', 0.543, true, './cases/Steam/query2/bge/base/945360_3_54.3.jpg'),
+                      createResult('sq2bb4', 'Game:Imposters: Countdown', 0.540, false, './cases/Steam/query2/bge/base/1445370_4_54.0.jpg'),
+                      createResult('sq2bb5', 'Game:Super Sus', 0.503, false, './cases/Steam/query2/bge/base/2920270_5_50.3.jpg')
                     ],
                     ours: [
-                      createResult('sq2bf1', 'Game:Red Dead Redemption 2', 0.487, true, './cases/Steam/query2/bge/ft/1174180_1_48.7.jpg'),
-                      createResult('sq2bf2', 'Game:Red Dead Redemption', 0.479, false, './cases/Steam/query2/bge/ft/2668510_2_47.9.jpg'),
-                      createResult('sq2bf3', 'Game:Red Dead Online', 0.474, false, './cases/Steam/query2/bge/ft/1404210_3_47.4.jpg'),
-                      createResult('sq2bf4', 'Game:Control Ultimate Edition', 0.466, false, './cases/Steam/query2/bge/ft/870780_4_46,6.jpg'),
-                      createResult('sq2bf5', 'Game:Assassin\'s Creed Odyssey', 0.460, false, './cases/Steam/query2/bge/ft/812140_5_46.0.jpg')
+                      createResult('sq2bf1', 'Game:Among Us', 0.564, true, './cases/Steam/query2/bge/ft/945360_1_56.4.jpg'),
+                      createResult('sq2bf2', 'Game:Imposters: Countdown', 0.562, false, './cases/Steam/query2/bge/ft/1445370_2_56.2.jpg'),
+                      createResult('sq2bf3', 'Game:拟态生还', 0.547, false, './cases/Steam/query2/bge/ft/3314020_3_54.7.jpg'),
+                      createResult('sq2bf4', 'Game:Super Sus', 0.532, false, './cases/Steam/query2/bge/ft/2920270_4_53.2.jpg'),
+                      createResult('sq2bf5', 'Game:Stowaway', 0.528, false, './cases/Steam/query2/bge/ft/1428470_5_52.8.jpg')
                     ]
                   }
                 }
@@ -791,11 +779,8 @@
           }
         ];
 
-        // --- COMPONENTS ---
-
         const ExpandableText = ({ text }) => {
           const [isExpanded, setIsExpanded] = useState(false);
-          // 简单的判断：如果文字超过200个字符，就认为它是长文本
           const isLongText = text.length > 200;
 
           if (!isLongText) {
@@ -849,9 +834,9 @@
 
         const ResultCard = ({ item, rank }) => {
           const badgeColors = {
-            1: 'bg-yellow-400 text-white shadow-yellow-200 border-yellow-300', // Gold
-            2: 'bg-slate-400 text-white shadow-slate-200 border-slate-300',     // Silver
-            3: 'bg-orange-400 text-white shadow-orange-200 border-orange-300',   // Bronze
+            1: 'bg-yellow-400 text-white shadow-yellow-200 border-yellow-300',
+            2: 'bg-slate-400 text-white shadow-slate-200 border-slate-300',
+            3: 'bg-orange-400 text-white shadow-orange-200 border-orange-300',
             default: 'bg-white text-slate-500 shadow-slate-200 border-slate-200'
           };
           const badgeStyle = badgeColors[rank] || badgeColors.default;
@@ -859,12 +844,10 @@
           return (
             <div className="group relative bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col animate-in fade-in zoom-in duration-500 mt-2">
               
-              {/* 排名徽章 */}
               <div className={`absolute -top-3 -left-3 w-8 h-8 flex items-center justify-center rounded-full shadow-md z-20 font-extrabold text-sm border-2 ${badgeStyle}`}>
                 {rank}
               </div>
 
-              {/* 对/错图标：增加 z-index (z-30) 确保在最上层，加强背景和阴影以防被遮挡 */}
               {item.isRelevant ? (
                 <div className="absolute top-2 right-2 text-emerald-600 bg-white border-2 border-emerald-100 rounded-full p-1 shadow-md z-30" title="Relevant">
                   <CheckCircle size={16} strokeWidth={3} />
@@ -933,7 +916,6 @@
           return (
             <div className="min-h-screen bg-slate-50 text-slate-800 font-sans pb-10 fade-in">
               
-              {/* Header */}
               <header className="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -956,7 +938,6 @@
 
               <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 
-                {/* Title Section */}
                 <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div>
                     <h2 className="text-2xl font-bold text-slate-900">Retrieval Case Studies</h2>
@@ -965,7 +946,6 @@
                     </p>
                   </div>
                   
-                  {/* Domain Selector Tabs */}
                   <div className="flex bg-white p-1 rounded-xl border border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
                     {CASES.map((c, idx) => {
                       const Icon = c.icon;
@@ -989,14 +969,11 @@
                   </div>
                 </div>
 
-                {/* Main Content Area */}
                 <div className={`transition-opacity duration-300 ${isAnimating ? 'opacity-50' : 'opacity-100'}`}>
                   
-                  {/* Query Controller Card */}
                   <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-1 mb-8">
                     <div className="flex flex-col md:flex-row">
                       
-                      {/* Query Content */}
                       <div className="flex-grow p-5 flex gap-5 items-start">
                          <div className="flex-shrink-0 mt-1">
                             <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 border border-indigo-100">
@@ -1021,7 +998,6 @@
                                  <img src={activeQuery.queryImage} alt="Query" className="w-16 h-16 rounded-lg object-cover border border-slate-200 shadow-sm" />
                               )}
                               <div className="w-full">
-                                {/* 使用新的 ExpandableText 组件 */}
                                 <ExpandableText text={activeQuery.text} />
                                 <p className="text-sm text-slate-500 mt-2 border-l-2 border-slate-200 pl-2">{activeQuery.desc}</p>
                               </div>
@@ -1029,7 +1005,6 @@
                          </div>
                       </div>
 
-                      {/* Query Navigation Controls */}
                       <div className="border-t md:border-t-0 md:border-l border-slate-100 p-4 flex md:flex-col items-center justify-center gap-3 bg-slate-50/50 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none w-full md:w-auto min-w-[140px]">
                         <span className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-0 md:mb-1">
                            Query {currentQueryIdx + 1} / {activeCase.queries.length}
@@ -1054,7 +1029,6 @@
                     </div>
                   </div>
 
-                  {/* Main Model Selection Tabs */}
                   <div className="mb-6 bg-white p-2 rounded-xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-4">
                      <div className="flex items-center gap-3 px-2">
                         <div className="p-1.5 bg-slate-100 text-slate-600 rounded-md">
@@ -1083,10 +1057,8 @@
                      </div>
                   </div>
 
-                  {/* Vertical Layout Container */}
                   <div className="flex flex-col gap-8">
                     
-                    {/* Top Row: Original Base Model */}
                     <div className="flex flex-col animate-in slide-in-from-top-4 duration-500">
                        <div className="bg-white border border-slate-200 border-b-0 rounded-t-xl p-4 flex items-center justify-between">
                           <div className="flex items-center gap-2">
@@ -1104,7 +1076,6 @@
                        </div>
 
                        <div className="bg-slate-50 border border-slate-200 rounded-b-xl p-5">
-                         {/* Updated Grid for 5 items */}
                          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                            {currentResults.baseline.map((item, i) => (
                              <ResultCard key={item.id} item={item} rank={i + 1} />
@@ -1118,14 +1089,12 @@
                        </div>
                     </div>
 
-                    {/* Vertical Flow Arrow */}
                     <div className="flex justify-center -my-4 z-10">
                        <div className="bg-white border border-slate-200 p-2 rounded-full text-indigo-400 shadow-sm">
                          <ArrowDown size={24} />
                        </div>
                     </div>
 
-                    {/* Bottom Row: Fine-tuned Model (Ours) */}
                     <div className="flex flex-col animate-in slide-in-from-bottom-4 duration-500">
                        <div className="bg-indigo-600 border border-indigo-600 border-b-0 rounded-t-xl p-4 flex items-center justify-between text-white">
                           <div className="flex items-center gap-2">
@@ -1146,7 +1115,6 @@
                        <div className="bg-indigo-50/50 border border-indigo-100 border-t-0 rounded-b-xl p-5 relative overflow-hidden">
                          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-indigo-100/50 to-transparent rounded-bl-full pointer-events-none"></div>
                          
-                         {/* Updated Grid for 5 items */}
                          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 relative z-10">
                            {currentResults.ours.map((item, i) => (
                              <ResultCard key={item.id} item={item} rank={i + 1} />
@@ -1168,7 +1136,6 @@
           );
         };
 
-        // --- 启动应用 ---
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
